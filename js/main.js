@@ -35,36 +35,36 @@ const kitten2 =
 const kitten3 = 
 `<li class="card"><article><img class="card_img" src="${imageCat3}" alt="gatito" /><h3 class="card_title">${nameCat3} </3><h4class="card_race">${race3} </h4><p class="card_description">${description3} </p></article></li>`;
 
+//newKitten.innerHTML = kitten1 + kitten2 + kitten3;
+
 //calls 
 const input_search_desc = document.querySelector('.js_in_search_desc'); //línea 57 html
 
 // Actions 
 jsNewForm.classList.remove('collapsed');
-input_search_desc.value = 'cariñoso';
+input_search_desc.value = 'tranquilo'; // si lo dejamos vacío aparecen todos los gatos
 const descrSearchText = input_search_desc.value;
 
-// HOLA VICKY!!! punto nº5 del ejercicio. Entendí q debe verse el kitten1/kitten2... según si sale la palabra cariñoso y estaba justo revisando la lecci´n pq me cuesta. Lo revisamos juntas el lunes con calma si se puede. Presión 0!!
-/*if( kitten1.includes(descrSearchText) ) {
-    else if 
-
-
- { 
+// Ejercicio de Condicionales
+if( description1.includes(descrSearchText) ) {
+        newKitten.innerHTML = kitten1
+  }
     
-    else { kitten1.classList.add('collapsed'); 
-    }    } */
-    
-    if( kittenDesc2.includes(descrSearchText) ) {
-    //Completa el código
+    if( description2.includes(descrSearchText) ) {
+        newKitten.innerHTML += kitten2
     }
     
-    if( kittenDesc3.includes(descrSearchText) ) {
-    //Completa el código
+    if( description3.includes(descrSearchText) ) {
+        newKitten.innerHTML += kitten3
     }
-        
+
+    // Mostrar/ocultar el formulario añadir Tirar desde aquí en condicionales.
+
+
 
 //const catRace = document.querySelector('.card_race'); <-- revisar este punto 
 // hemos añadido la clase después de card_race y no funciona por qué
 
-newKitten.innerHTML = kitten1 + kitten2 + kitten3;
+
 
 
