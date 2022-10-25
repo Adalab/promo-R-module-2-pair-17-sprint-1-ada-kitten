@@ -4,7 +4,7 @@ const jsNewForm = document.querySelector('.js-new-form');
 
 
 const newKitten = document.querySelector('.js-list');
-
+let detailRace = '';
 
 // const de los gatos con sus características 
 const imageCat1 =  'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg';
@@ -41,7 +41,16 @@ const kitten3 =
 const input_search_desc = document.querySelector('.js_in_search_desc'); //línea 57 html
 
 // Actions 
-jsNewForm.classList.remove('collapsed');
+//jsNewForm.classList.remove('collapsed');
+//jsNewForm.classList.add('collapsed'); <-- invalida la línea 44
+
+// está quitado collapsed con el IF si la quieres añadir, se debe hacer fuera del IF
+if (jsNewForm.classList.contains('collapsed')) { // Aquí nos abre ábanico de si la tiene la añade (48) caso opuesto la quita (50)
+    jsNewForm.classList.remove('collapsed'); // Se para aquí pq sí la tiene y no avanza a la 50
+} else {
+    jsNewForm.classList.add('collapsed') 
+}
+
 input_search_desc.value = 'tranquilo'; // si lo dejamos vacío aparecen todos los gatos
 const descrSearchText = input_search_desc.value;
 
@@ -58,8 +67,22 @@ if( description1.includes(descrSearchText) ) {
         newKitten.innerHTML += kitten3
     }
 
-    // Mostrar/ocultar el formulario añadir Tirar desde aquí en condicionales.
-
+    //let detailRace = '';
+    if (race1 === "") {
+        detailRace = `No se ha especificado la raza`;
+      } else {
+        detailRace = race1;
+      }
+      if (race2 === "") {
+        detailRace = `No se ha especificado la raza`;
+      } else {
+        detailRace = race2;
+      }
+      if (race3 === "") {
+        detailRace = `No se ha especificado la raza`;
+      } else {
+        detailRace = race3;
+      }
 
 
 //const catRace = document.querySelector('.card_race'); <-- revisar este punto 
