@@ -1,15 +1,36 @@
 'use strict';
 
 const jsNewForm = document.querySelector('.js-new-form');
-
-
 const newKitten = document.querySelector('.js-list');
-let detailRace = '';
 
-// const de los gatos con sus características 
+
+//hemos creado los objetos para después meterlo en una nuestra función pintadora!! SOMOS UNAS MACHINEEES
+const kittenA = {
+  imageCat1 :  'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg',
+  nameCat1 : 'anastacio'.toUpperCase(),
+  race1 : 'British Shorthair',
+  description1 : 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!',
+};
+
+const kittenB = {
+  imageCat1 :  'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg',
+  nameCat1 : 'fiona'.toUpperCase(),
+  race1 : 'British Shorthair',
+  description1 : 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!',
+};
+
+const kittenC = {
+  imageCat1 :  'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg',
+  nameCat1 : 'cielo'.toUpperCase(),
+  race1 : 'British Shorthair',
+  description1 : 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!',
+};
+
+
+/*// const de los gatos con sus características 
 const imageCat1 =  'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg';
 const nameCat1 = 'anastacio'.toUpperCase();
-const race1 = '';//'British Shorthair' ;
+const race1 = 'British Shorthair' ;
 const description1 = 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!';
 
 const imageCat2 =  'https://images.emedicinehealth.com/images/article/main_image/cat-scratch-disease.jpg';
@@ -21,7 +42,7 @@ const description2 = 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie 
 const imageCat3 =  'https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_39/3021711/190923-cat-pet-stock-cs-1052a.jpg';
 const nameCat3 = 'cielo'.toUpperCase();
 const race3 = 'British Shorthair' ;
-const description3 = 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!';
+const description3 = 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!';*/
 
 /*jsList.innerHTML = `<li> <img src=" ${imageCat1}"> <h3>${nameCat1}</h3> <h4>${race1}</h4> <p>${description1}</p>  </li>`;*/
 
@@ -33,8 +54,17 @@ function getRaceMessage(genericRace) {  // Esto es igual a const genericRace = r
   }
 }
 
+
+function renderCats(cats) {
+  return `<li class="card"><article><img class="card_img" src="${imageCat1}" alt="gatito" /><h3 class="card_title">${nameCat1} </3><h4class="card_race">${getRaceMessage(race1)} </h4><p class="card_description">${description1} </p></article></li>`;
+}
+
+
+
+
+// vamos a crearnos a función pintadora. Que nos pintará en el HTML las nuevas cosas que vayamos añadiendo
 const kitten1 = 
-`<li class="card"><article><img class="card_img" src="${imageCat1}" alt="gatito" /><h3 class="card_title">${nameCat1} </3><h4class="card_race">${detailRace} </h4><p class="card_description">${description1} </p></article></li>`;
+`<li class="card"><article><img class="card_img" src="${imageCat1}" alt="gatito" /><h3 class="card_title">${nameCat1} </3><h4class="card_race">${getRaceMessage(race1)} </h4><p class="card_description">${description1} </p></article></li>`;
 
 const kitten2 = 
 `<li class="card"><article><img class="card_img" src="${imageCat2}" alt="gatito" /><h3 class="card_title">${nameCat2} </3><h4class="card_race">${ getRaceMessage(race2) } </h4><p class="card_description">${description2} </p></article></li>`;
@@ -80,7 +110,3 @@ if( description1.includes(descrSearchText) ) {
 
 //const catRace = document.querySelector('.card_race'); <-- revisar este punto 
 // hemos añadido la clase después de card_race y no funciona por qué
-
-
-
-
