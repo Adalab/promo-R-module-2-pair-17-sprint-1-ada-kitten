@@ -3,48 +3,61 @@
 const jsNewForm = document.querySelector('.js-new-form');
 const newKitten = document.querySelector('.js-list');
 
+// Ejercicio 2.4 Eventos - Validar formulario nuevo gatito
+const jsBtnAñadir = document.querySelector(".js-btn-add");
+
+const inputDesc = document.querySelector('.js-input-desc');
+const inputPhoto = document.querySelector('.js-input-photo');
+const inputName = document.querySelector('.js-input-name');
+const labelMesageError = document.querySelector('.js-label-error');
+
+
+
+function handleClick(event) {
+  event.preventDefault();
+
+  const valueDesc = inputDesc.value;
+  const valuePhoto = inputPhoto.value;
+  const valueName = inputName.value;
+  
+  if (valueDesc === '' || valuePhoto === '' || valueName === '') {
+    labelMesageError.innerHTML = 'Debe rellenar todos los valores';
+  } else {
+    const kitten = {
+      imageCat : valuePhoto,
+      nameCat : valueName,
+      race : 'British Shorthair',
+      description : valueDesc,
+    };
+    newKitten.innerHTML += renderCats(kitten);
+  }
+}
+
+jsBtnAñadir.addEventListener("click", handleClick);
 
 //hemos creado los objetos para después meterlo en una nuestra función pintadora!! SOMOS UNAS MACHINEEES
 const kittenA = {
-  imageCat1 :  'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg',
-  nameCat1 : 'anastacio'.toUpperCase(),
-  race1 : 'British Shorthair',
-  description1 : 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!',
+  imageCat :  'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg',
+  nameCat : 'anastacio'.toUpperCase(),
+  race : 'British Shorthair',
+  description : 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!',
 };
 
 const kittenB = {
-  imageCat1 :  'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg',
-  nameCat1 : 'fiona'.toUpperCase(),
-  race1 : 'British Shorthair',
-  description1 : 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!',
+  imageCat :  'https://images.emedicinehealth.com/images/article/main_image/cat-scratch-disease.jpg',
+  nameCat : 'fiona'.toUpperCase(),
+  race : 'British Shorthair',
+  description : 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!',
 };
 
 const kittenC = {
-  imageCat1 :  'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg',
-  nameCat1 : 'cielo'.toUpperCase(),
-  race1 : 'British Shorthair',
-  description1 : 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!',
+  imageCat :  'https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_39/3021711/190923-cat-pet-stock-cs-1052a.jpg',
+  nameCat : 'cielo'.toUpperCase(),
+  race : 'British Shorthair',
+  description : 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!',
 };
 
-
-/*// const de los gatos con sus características 
-const imageCat1 =  'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg';
-const nameCat1 = 'anastacio'.toUpperCase();
-const race1 = 'British Shorthair' ;
-const description1 = 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!';
-
-const imageCat2 =  'https://images.emedicinehealth.com/images/article/main_image/cat-scratch-disease.jpg';
-const nameCat2 = 'fiona'.toUpperCase();
-const race2 = 'British Shorthair'
-const description2 = 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!';
- 
-
-const imageCat3 =  'https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_39/3021711/190923-cat-pet-stock-cs-1052a.jpg';
-const nameCat3 = 'cielo'.toUpperCase();
-const race3 = 'British Shorthair' ;
-const description3 = 'Ruiseñor, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!';*/
-
-/*jsList.innerHTML = `<li> <img src=" ${imageCat1}"> <h3>${nameCat1}</h3> <h4>${race1}</h4> <p>${description1}</p>  </li>`;*/
+const listCats = [kittenA, kittenB, kittenC]; // Sin comillas hace referencia a la constante (nos tenemos que fijar en el color). Si lo ponemos como comillas no coge el contenido. 
 
 function getRaceMessage(genericRace) {  // Esto es igual a const genericRace = race1/race2/race3
   if (genericRace === "") {
@@ -53,26 +66,21 @@ function getRaceMessage(genericRace) {  // Esto es igual a const genericRace = r
     return genericRace;
   }
 }
+let index = 0;
 
-
+// aquí ponemos (cats) + los objetos de la función. 
 function renderCats(cats) {
-  return `<li class="card"><article><img class="card_img" src="${imageCat1}" alt="gatito" /><h3 class="card_title">${nameCat1} </3><h4class="card_race">${getRaceMessage(race1)} </h4><p class="card_description">${description1} </p></article></li>`;
+  return `<li class="card"><article><img class="card_img" src="${cats.imageCat}" alt="gatito" /><h3 class="card_title">${cats.nameCat} </3><h4class="card_race">${getRaceMessage(cats.race)} </h4><p class="card_description">${cats.description} </p></article></li>`;
 }
 
+newKitten.innerHTML += renderCats(listCats[index]);
+index++;
 
+newKitten.innerHTML += renderCats(listCats[index]);;
+index++;
 
+newKitten.innerHTML += renderCats(listCats[index]);;
 
-// vamos a crearnos a función pintadora. Que nos pintará en el HTML las nuevas cosas que vayamos añadiendo
-const kitten1 = 
-`<li class="card"><article><img class="card_img" src="${imageCat1}" alt="gatito" /><h3 class="card_title">${nameCat1} </3><h4class="card_race">${getRaceMessage(race1)} </h4><p class="card_description">${description1} </p></article></li>`;
-
-const kitten2 = 
-`<li class="card"><article><img class="card_img" src="${imageCat2}" alt="gatito" /><h3 class="card_title">${nameCat2} </3><h4class="card_race">${ getRaceMessage(race2) } </h4><p class="card_description">${description2} </p></article></li>`;
-
-const kitten3 = 
-`<li class="card"><article><img class="card_img" src="${imageCat3}" alt="gatito" /><h3 class="card_title">${nameCat3} </3><h4class="card_race">${ getRaceMessage(race3) } </h4><p class="card_description">${description3} </p></article></li>`;
-
-//newKitten.innerHTML = kitten1 + kitten2 + kitten3;
 
 //calls 
 const input_search_desc = document.querySelector('.js_in_search_desc'); //línea 57 html
@@ -92,20 +100,20 @@ input_search_desc.value = 'tranquilo'; // si lo dejamos vacío aparecen todos lo
 const descrSearchText = input_search_desc.value;
 
 // Ejercicio de Condicionales
-if( description1.includes(descrSearchText) ) {
-        newKitten.innerHTML = kitten1
+if( kittenA.description.includes(descrSearchText) ) {
+        newKitten.innerHTML = renderCats(kittenA)
   }
     
-    if( description2.includes(descrSearchText) ) {
-        newKitten.innerHTML += kitten2
+    if( kittenB.description.includes(descrSearchText) ) {
+        newKitten.innerHTML += renderCats(kittenB)
     }
     
-    if( description3.includes(descrSearchText) ) {
-        newKitten.innerHTML += kitten3
+    if( kittenC.description.includes(descrSearchText) ) {
+        newKitten.innerHTML += renderCats(kittenC)
     }
 
 
-     
+
 
 
 //const catRace = document.querySelector('.card_race'); <-- revisar este punto 
